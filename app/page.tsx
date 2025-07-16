@@ -146,16 +146,39 @@ const images = [
   },
 ];
 
+// Fisher-Yates shuffle
+function shuffleArray<T>(array: T[]): T[] {
+  const arr = array.slice();
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+function getImageSrc(img: { src: string; caption: string }, cacheBust: string) {
+  // Skip cache-busting for servers that don't support it
+  if (
+    img.src.includes('ctraficomovilidad.malaga.eu') ||
+    img.src.includes('lh3.googleusercontent.com')
+  ) {
+    return img.src;
+  }
+  return `${img.src}${img.src.includes('?') ? '&' : '?'}${cacheBust}`;
+}
+
 export default function Home() {
-  const [current, setCurrent] = useState(0);
+  const [order, setOrder] = useState<number[]>(images.map((_, i) => i)); // deterministic order
+  const [pointer, setPointer] = useState(0);
   const [fade, setFade] = useState(false);
   const [hasHydrated, setHasHydrated] = useState(false);
   const [cacheBust, setCacheBust] = useState('');
   const preloadImg = useRef<HTMLImageElement | null>(null);
 
-  // Hydration flag
+  // Hydration flag and shuffle after hydration
   useEffect(() => {
     setHasHydrated(true);
+    setOrder(shuffleArray(images.map((_, i) => i))); // shuffle only on client
   }, []);
 
   // Generate a new cache bust string for each image change
@@ -163,18 +186,19 @@ export default function Home() {
     if (hasHydrated) {
       setCacheBust(`cb=${Date.now()}`);
     }
-  }, [current, hasHydrated]);
+  }, [pointer, hasHydrated]);
 
   // Preload the next image with the same cache bust string
   useEffect(() => {
     if (!hasHydrated) return;
-    const next = (current + 1) % images.length;
-    const nextSrc = `${images[next].src}${images[next].src.includes('?') ? '&' : '?'}cb=${Date.now()}`;
+    const nextPointer = (pointer + 1) % images.length;
+    const nextIndex = order[nextPointer];
+    const nextSrc = getImageSrc(images[nextIndex], `cb=${Date.now()}`);
     if (!preloadImg.current) {
       preloadImg.current = new window.Image();
     }
     preloadImg.current.src = nextSrc;
-  }, [current, hasHydrated]);
+  }, [pointer, order, hasHydrated]);
 
   // Fade and image switch logic
   useEffect(() => {
@@ -182,29 +206,37 @@ export default function Home() {
     const fadeOutTimeout = setTimeout(() => {
       setFade(true);
       setTimeout(() => {
-        setCurrent((prev) => (prev + 1) % images.length);
+        setPointer((prev) => {
+          const next = prev + 1;
+          if (next >= images.length) {
+            // Reshuffle for the next round
+            setOrder(shuffleArray(images.map((_, i) => i)));
+            return 0;
+          }
+          return next;
+        });
         setFade(false);
       }, 800);
     }, 15000);
 
     return () => clearTimeout(fadeOutTimeout);
-  }, [current, hasHydrated]);
+  }, [pointer, hasHydrated, order]);
 
-  // Only add cache busting after hydration
+  const currentIndex = order[pointer];
   const src = hasHydrated
-    ? `${images[current].src}${images[current].src.includes('?') ? '&' : '?'}${cacheBust}`
-    : images[current].src;
+    ? getImageSrc(images[currentIndex], cacheBust)
+    : images[currentIndex].src;
 
   return (
     <div className="w-screen h-screen flex flex-col items-center justify-center bg-[#222] overflow-hidden relative">
       <img
         src={src}
-        alt={images[current].caption}
+        alt={images[currentIndex].caption}
         className={`w-screen h-screen object-contain bg-[#222] rounded-none shadow-none block transition-opacity duration-1000 ${fade ? 'opacity-0' : 'opacity-100'}`}
         style={{ transitionProperty: 'opacity' }}
       />
       <div className="absolute top-[150px] right-0 w-[30vw] text-white text-2xl text-center bg-black/40 py-4 m-0">
-        {images[current].caption}
+        {images[currentIndex].caption}
       </div>
     </div>
   );
