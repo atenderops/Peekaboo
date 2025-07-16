@@ -85,7 +85,7 @@ const images = [
     caption: 'Bremerhaven, Germany',
   },
   {
-    src: 'https://kamera.atlas.vegvesen.no/api/images/3001079_1',
+    src: 'https://images-webcams.windy.com/90/1514893190/current/full/1514893190.jpg',
     caption: 'Sotra, Norway',
   },
   {
@@ -271,25 +271,40 @@ export default function Home() {
       <img
         src={src}
         alt={images[currentIndex].caption}
-        className={`w-screen h-screen object-contain bg-[#222] rounded-none shadow-none block transition-opacity duration-1000 ${fade ? 'opacity-0' : 'opacity-100'
-          }`}
+        className={`w-screen h-screen object-contain bg-[#222] rounded-none shadow-none block transition-opacity duration-1000 ${fade ? 'opacity-0' : 'opacity-100'}`}
         style={{ transitionProperty: 'opacity' }}
       />
       <div className="absolute top-[150px] right-0 w-[30vw] text-white text-2xl text-center bg-black/40 py-4 m-0">
         {images[currentIndex].caption}
       </div>
-      {showInfoBox && (
-        <div
-          className={`absolute bottom-[100px] left-0 w-[35vw] text-black text-lg text-center py-6 px-4 m-0 rounded shadow-lg transition-opacity duration-1000
-            ${infoBoxFade === 'in' ? 'opacity-100' : ''}
-            ${infoBoxFade === 'out' ? 'opacity-0' : ''}
-            ${!infoBoxFade ? 'opacity-0' : ''}`}
-          style={{ backgroundColor: '#f1e11e' }}
-        >
-          This displays close to live views from where our colleagues are from. <br /> Is
-          your home missing? Let the tech team know and we will add it.
+      {/* Infobox + Logo container */}
+      <div
+        className="absolute bottom-[100px] left-0 flex flex-row items-center"
+        style={{ minHeight: '120px', minWidth: '35vw' }}
+      >
+        {/* Logo: always visible, inside infobox boundaries */}
+        <div className="flex-shrink-0 flex items-center justify-center h-full pl-4 pr-2">
+          <img src="/atender_logo.png" alt="Atender Logo" className="w-24 mx-auto mb-0" />
         </div>
-      )}
+        {/* Infobox: fades in/out, takes remaining space */}
+        <div
+          className={`
+              text-black text-lg text-center py-6 px-4 m-0 rounded shadow-lg transition-opacity duration-1000
+              ${showInfoBox ? (infoBoxFade === 'in' ? 'opacity-100' : 'opacity-0') : 'opacity-0'}
+              bg-[#f1e11e]
+            `}
+          style={{
+            minWidth: '22vw',
+            maxWidth: '30vw',
+            backgroundColor: '#f1e11e',
+            marginLeft: '0.5rem',
+            display: showInfoBox ? 'block' : 'block', // always reserve space
+          }}
+        >
+          This displays close to live views from where our colleagues are from. <br />
+          Is your home missing? Let the tech team know and we will add it.
+        </div>
+      </div>
     </div>
   );
 }
