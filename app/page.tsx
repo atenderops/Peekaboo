@@ -9,6 +9,10 @@ const images = [
     caption: 'Stockholm, Sweden',
   },
   {
+    src: 'https://images-webcams.windy.com/67/1658397367/current/full/1658397367.jpg',
+    caption: 'Malaga, Spain',
+  },
+  {
     src: 'https://images-webcams.windy.com/05/1306625605/current/full/1306625605.jpg',
     caption: 'Guanajuato, Mexico',
   },
@@ -135,10 +139,6 @@ const images = [
   {
     src: 'https://images-webcams.windy.com/39/1675205239/current/full/1675205239.jpg',
     caption: 'Hønefoss, Norway',
-  },
-  {
-    src: 'https://ctraficomovilidad.malaga.eu/recursos/movilidad/camaras_trafico/TV-29.jpg',
-    caption: 'Malaga, Spain',
   },
   {
     src: 'https://images-webcams.windy.com/29/1657223329/current/full/1657223329.jpg',
