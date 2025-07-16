@@ -34,7 +34,7 @@ const images = [
   },
   {
     src: 'https://images-webcams.windy.com/99/1585143899/current/full/1585143899.jpg',
-    caption: 'Larvik, Norway',
+    caption: 'Grimstad, Norway',
   },
   {
     src: 'https://images-webcams.windy.com/67/1353056967/current/full/1353056967.jpg',
@@ -168,11 +168,13 @@ function getImageSrc(img: { src: string; caption: string }, cacheBust: string) {
 }
 
 export default function Home() {
-  const [order, setOrder] = useState<number[]>(images.map((_, i) => i)); // deterministic order
+  const [order, setOrder] = useState<number[]>(images.map((_, i) => i));
   const [pointer, setPointer] = useState(0);
   const [fade, setFade] = useState(false);
   const [hasHydrated, setHasHydrated] = useState(false);
   const [cacheBust, setCacheBust] = useState('');
+  const [showInfoBox, setShowInfoBox] = useState(false);
+  const [infoBoxFade, setInfoBoxFade] = useState<'in' | 'out' | null>(null);
   const preloadImg = useRef<HTMLImageElement | null>(null);
 
   // Hydration flag and shuffle after hydration
@@ -222,6 +224,39 @@ export default function Home() {
     return () => clearTimeout(fadeOutTimeout);
   }, [pointer, hasHydrated, order]);
 
+  // Infobox random timing logic with fade
+  useEffect(() => {
+    if (!hasHydrated) return;
+    let showTimeout: NodeJS.Timeout;
+    let hideTimeout: NodeJS.Timeout;
+    let fadeOutTimeout: NodeJS.Timeout;
+
+    function scheduleNext() {
+      const delay =
+        Math.floor(Math.random() * (8 - 3 + 1) * 60 * 1000) + 3 * 60 * 1000; // 3-8 min
+      showTimeout = setTimeout(() => {
+        setShowInfoBox(true);
+        setInfoBoxFade('in');
+        // Start fade out 1s before hiding (for 1s fade)
+        fadeOutTimeout = setTimeout(() => {
+          setInfoBoxFade('out');
+        }, 29000); // 29s after showing
+        hideTimeout = setTimeout(() => {
+          setShowInfoBox(false);
+          setInfoBoxFade(null);
+          scheduleNext();
+        }, 30000); // Show for 30s
+      }, delay);
+    }
+
+    scheduleNext();
+    return () => {
+      clearTimeout(showTimeout);
+      clearTimeout(hideTimeout);
+      clearTimeout(fadeOutTimeout);
+    };
+  }, [hasHydrated]);
+
   const currentIndex = order[pointer];
   const src = hasHydrated
     ? getImageSrc(images[currentIndex], cacheBust)
@@ -232,12 +267,25 @@ export default function Home() {
       <img
         src={src}
         alt={images[currentIndex].caption}
-        className={`w-screen h-screen object-contain bg-[#222] rounded-none shadow-none block transition-opacity duration-1000 ${fade ? 'opacity-0' : 'opacity-100'}`}
+        className={`w-screen h-screen object-contain bg-[#222] rounded-none shadow-none block transition-opacity duration-1000 ${fade ? 'opacity-0' : 'opacity-100'
+          }`}
         style={{ transitionProperty: 'opacity' }}
       />
       <div className="absolute top-[150px] right-0 w-[30vw] text-white text-2xl text-center bg-black/40 py-4 m-0">
         {images[currentIndex].caption}
       </div>
+      {showInfoBox && (
+        <div
+          className={`absolute bottom-[100px] left-0 w-[35vw] text-black text-lg text-center py-6 px-4 m-0 rounded shadow-lg transition-opacity duration-1000
+            ${infoBoxFade === 'in' ? 'opacity-100' : ''}
+            ${infoBoxFade === 'out' ? 'opacity-0' : ''}
+            ${!infoBoxFade ? 'opacity-0' : ''}`}
+          style={{ backgroundColor: '#f1e11e' }}
+        >
+          This displays close to live views from where our colleagues are from. <br /> Is
+          your home missing? Let the tech team know and we will add it.
+        </div>
+      )}
     </div>
   );
 }
