@@ -144,6 +144,10 @@ const images = [
     src: 'https://images-webcams.windy.com/29/1657223329/current/full/1657223329.jpg',
     caption: 'Helsingborg, Sweden',
   },
+  {
+    src: 'https://snapshot.hhcamping.no:5000/snap/0',
+    caption: 'Haugesund, Norway',
+  },
 ];
 
 // Fisher-Yates shuffle
