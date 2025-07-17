@@ -140,9 +140,9 @@ const images = [
     subcaption: '',
   },
   {
-    src: 'https://nettkamera.cid.no/hortenHavn/naa.jpg',
-    caption: 'Horten, Norway',
-    subcaption: 'Near Åsgårdstrand',
+    src: 'https://nettkamera.cid.no/asgardHavnVest/max.jpg?0.33787127798949435',
+    caption: 'Åsgårdstrand, Norway',
+    subcaption: '',
   },
   {
     src: 'https://www.ursa.fi/yhd/tampereenursa/ys-images/north-snapshot.jpg',
@@ -202,6 +202,11 @@ const images = [
   {
     src: 'https://images-webcams.windy.com/43/1593548443/current/full/1593548443.jpg',
     caption: 'Söderköping, Sweden',
+    subcaption: '',
+  },
+  {
+    src: 'https://images-webcams.windy.com/76/1351356776/current/full/1351356776.jpg',
+    caption: 'Seville, Spain',
     subcaption: '',
   },
 ];
