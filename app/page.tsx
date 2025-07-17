@@ -5,11 +5,17 @@ import { useEffect, useRef, useState } from 'react';
 
 const images = [
   {
-    src: 'https://www.karlslundsmarina.nu/wp-content/uploads/kamera-syd.jpg',
-    caption: 'Stockholm, Sweden',
+    src: 'https://kamera.atlas.vegvesen.no/api/images/0429004_1',
+    caption: 'Kongsvinger, Norway',
+    subcaption: 'near Finnsrud, Skotterud & Vestmarka',
   },
   {
-    src: 'https://images-webcams.windy.com/67/1658397367/current/full/1658397367.jpg',
+    src: 'https://www.karlslundsmarina.nu/wp-content/uploads/kamera-syd.jpg',
+    caption: 'Stockholm, Sweden',
+    subcaption: 'near Strängnäs',
+  },
+  {
+    src: 'https://ctraficomovilidad.malaga.eu/recursos/movilidad/camaras_trafico/TV-07.jpg',
     caption: 'Malaga, Spain',
   },
   {
@@ -23,10 +29,12 @@ const images = [
   {
     src: 'https://images-webcams.windy.com/05/1385823105/current/full/1385823105.jpg',
     caption: 'Calimanesti, Romania',
+    subcaption: 'near Valcea',
   },
   {
     src: 'https://kamera.atlas.vegvesen.no/api/images/3000896_1',
     caption: 'Festøya, Norway',
+    subcaption: 'near Hundeidvik',
   },
   {
     src: 'https://images-webcams.windy.com/83/1616032183/current/full/1616032183.jpg',
@@ -53,12 +61,14 @@ const images = [
     caption: 'Hamburg, Germany',
   },
   {
-    src: 'https://images-webcams.windy.com/00/1482439900/current/full/1482439900.jpg',
+    src: 'https://cams.oresundsbron.com/pylonwest',
     caption: 'Malmö, Sweden',
+    subcaption: 'Oresund Bridge, near Hjärup',
   },
   {
     src: 'https://images-webcams.windy.com/03/1180866703/current/full/1180866703.jpg',
     caption: 'Cancun, Mexico',
+    subcaption: 'near Merida',
   },
   {
     src: 'https://images-webcams.windy.com/29/1309679629/current/full/1309679629.jpg',
@@ -119,10 +129,6 @@ const images = [
   {
     src: 'https://images-webcams.windy.com/71/1460757071/current/full/1460757071.jpg',
     caption: 'Bergen, Norway',
-  },
-  {
-    src: 'https://kamera.atlas.vegvesen.no/api/images/0429004_1',
-    caption: 'Kongsvinger, Norway',
   },
   {
     src: 'https://www.lussevika.com/lussevikawebcam.jpg',
@@ -276,6 +282,11 @@ export default function Home() {
       />
       <div className="absolute top-[150px] right-0 w-[30vw] text-white text-2xl text-center bg-black/40 py-4 m-0">
         {images[currentIndex].caption}
+        {images[currentIndex].subcaption && (
+          <div className="text-base text-gray-200 mt-2">
+            {images[currentIndex].subcaption}
+          </div>
+        )}
       </div>
       {/* Infobox + Logo container */}
       <div
@@ -301,8 +312,8 @@ export default function Home() {
             display: showInfoBox ? 'block' : 'block', // always reserve space
           }}
         >
-          This displays close to live views from where our colleagues are from. <br />
-          Is your home missing? Let the tech team know and we will add it.
+          Atender Peekaboo is a webcam carousel that showcases the hometown or area where each employee in the company comes from around the world. <br></br>
+          If your area is missing, reach out to the Tech team.
         </div>
       </div>
     </div>
