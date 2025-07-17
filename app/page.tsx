@@ -17,14 +17,22 @@ const images = [
   {
     src: 'https://ctraficomovilidad.malaga.eu/recursos/movilidad/camaras_trafico/TV-07.jpg',
     caption: 'Malaga, Spain',
+    subcaption: '',
+  },
+  {
+    src: 'https://images-webcams.windy.com/49/1689408949/current/full/1689408949.jpg',
+    caption: 'Malaga, Spain',
+    subcaption: '',
   },
   {
     src: 'https://images-webcams.windy.com/05/1306625605/current/full/1306625605.jpg',
     caption: 'Guanajuato, Mexico',
+    subcaption: '',
   },
   {
     src: 'https://images-webcams.windy.com/26/1306621426/current/full/1306621426.jpg',
     caption: 'Mexico City, Mexico',
+    subcaption: '',
   },
   {
     src: 'https://images-webcams.windy.com/05/1385823105/current/full/1385823105.jpg',
@@ -39,26 +47,32 @@ const images = [
   {
     src: 'https://images-webcams.windy.com/83/1616032183/current/full/1616032183.jpg',
     caption: 'Glasgow, Scotland',
+    subcaption: '',
   },
   {
     src: 'https://images-webcams.windy.com/99/1585143899/current/full/1585143899.jpg',
     caption: 'Grimstad, Norway',
+    subcaption: '',
   },
   {
     src: 'https://images-webcams.windy.com/67/1353056967/current/full/1353056967.jpg',
     caption: 'Larvik, Norway',
+    subcaption: '',
   },
   {
     src: 'https://images-webcams.windy.com/60/1496484660/current/full/1496484660.jpg',
     caption: 'Belfast, Northern Ireland',
+    subcaption: '',
   },
   {
     src: 'https://images-webcams.windy.com/18/1559677318/current/full/1559677318.jpg',
     caption: 'Gothenburg, Sweden',
+    subcaption: '',
   },
   {
     src: 'https://images-webcams.windy.com/48/1459599148/current/full/1459599148.jpg',
     caption: 'Hamburg, Germany',
+    subcaption: '',
   },
   {
     src: 'https://cams.oresundsbron.com/pylonwest',
@@ -73,86 +87,107 @@ const images = [
   {
     src: 'https://images-webcams.windy.com/29/1309679629/current/full/1309679629.jpg',
     caption: 'Mariestad, Sweden',
+    subcaption: '',
   },
   {
     src: 'https://images-webcams.windy.com/85/1491224085/current/full/1491224085.jpg',
     caption: 'Wexford, Ireland',
+    subcaption: '',
   },
   {
     src: 'https://images-webcams.windy.com/20/1669881620/current/full/1669881620.jpg',
     caption: 'Stavanger, Norway',
+    subcaption: '',
   },
   {
     src: 'https://images-webcams.windy.com/07/1665692307/current/full/1665692307.jpg',
     caption: 'Cali, Colombia',
+    subcaption: '',
   },
   {
     src: 'https://annaboda.s3.eu-north-1.amazonaws.com/last_image_3.jpg?1752573529559',
     caption: 'Karlskoga, Sweden',
+    subcaption: '',
   },
   {
     src: 'https://www.sportboothafen-nordenham.de/module/2004024/parts/webcam.php?type=2',
     caption: 'Bremerhaven, Germany',
+    subcaption: '',
   },
   {
     src: 'https://images-webcams.windy.com/90/1514893190/current/full/1514893190.jpg',
     caption: 'Sotra, Norway',
+    subcaption: '',
   },
   {
     src: 'https://images-webcams.windy.com/21/1523939321/current/full/1523939321.jpg',
     caption: 'Birkerød, Denmark',
+    subcaption: '',
   },
   {
     src: 'https://images-webcams.windy.com/93/1632848893/current/full/1632848893.jpg',
     caption: 'Frederikssund, Denmark',
+    subcaption: '',
   },
   {
     src: 'https://images-webcams.windy.com/07/1686051607/current/full/1686051607.jpg',
     caption: 'Herlev, Denmark',
+    subcaption: '',
   },
   {
     src: 'https://www.wdr.de/themen/global/webcams/domcam/domcam_960_live.jpg',
     caption: 'Köln, Germany',
+    subcaption: '',
   },
   {
     src: 'https://nettkamera.cid.no/hortenHavn/naa.jpg',
     caption: 'Åsgårdstrand, Norway',
+    subcaption: '',
   },
   {
     src: 'https://www.ursa.fi/yhd/tampereenursa/ys-images/north-snapshot.jpg',
     caption: 'Tampere, Finland',
+    subcaption: '',
   },
   {
     src: 'https://ie-cam.net/pic/heritage.jpg',
     caption: 'Tullamore, Ireland',
+    subcaption: '',
   },
   {
     src: 'https://images-webcams.windy.com/71/1460757071/current/full/1460757071.jpg',
     caption: 'Bergen, Norway',
+    subcaption: '',
   },
   {
     src: 'https://www.lussevika.com/lussevikawebcam.jpg',
     caption: 'Mandal, Norway',
+    subcaption: '',
   },
   {
     src: 'https://images-webcams.windy.com/16/1337867816/current/full/1337867816.jpg',
     caption: 'Oslo, Norway',
+    subcaption: '',
   },
   {
     src: 'https://enrk.net/webcam/southeast000M.jpg',
     caption: 'Mysen, Norway',
+    subcaption: '',
   },
   {
     src: 'https://images-webcams.windy.com/39/1675205239/current/full/1675205239.jpg',
     caption: 'Hønefoss, Norway',
+    subcaption: '',
   },
   {
     src: 'https://images-webcams.windy.com/29/1657223329/current/full/1657223329.jpg',
     caption: 'Helsingborg, Sweden',
+    subcaption: '',
   },
   {
     src: 'https://snapshot.hhcamping.no:5000/snap/0',
     caption: 'Haugesund, Norway',
+    subcaption: '',
   },
 ];
 
