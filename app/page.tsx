@@ -209,6 +209,11 @@ const images = [
     caption: 'Seville, Spain',
     subcaption: '',
   },
+  {
+    src: 'https://images-webcams.windy.com/85/1666687085/current/full/1666687085.jpg',
+    caption: 'Tyler, TX, USA',
+    subcaption: '',
+  },
 ];
 
 // Fisher-Yates shuffle
