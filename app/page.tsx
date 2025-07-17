@@ -141,8 +141,8 @@ const images = [
   },
   {
     src: 'https://nettkamera.cid.no/hortenHavn/naa.jpg',
-    caption: 'Åsgårdstrand, Norway',
-    subcaption: '',
+    caption: 'Horten, Norway',
+    subcaption: 'Near Åsgårdstrand',
   },
   {
     src: 'https://www.ursa.fi/yhd/tampereenursa/ys-images/north-snapshot.jpg',
@@ -197,6 +197,11 @@ const images = [
   {
     src: 'https://images-webcams.windy.com/44/1632771444/current/full/1632771444.jpg',
     caption: 'Goiânia, Brazil',
+    subcaption: '',
+  },
+  {
+    src: 'https://images-webcams.windy.com/43/1593548443/current/full/1593548443.jpg',
+    caption: 'Söderköping, Sweden',
     subcaption: '',
   },
 ];
