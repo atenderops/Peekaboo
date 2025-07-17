@@ -194,6 +194,11 @@ const images = [
     caption: 'Bangkok, Thailand',
     subcaption: '',
   },
+  {
+    src: 'https://images-webcams.windy.com/44/1632771444/current/full/1632771444.jpg',
+    caption: 'Goiânia, Brazil',
+    subcaption: '',
+  },
 ];
 
 // Fisher-Yates shuffle
