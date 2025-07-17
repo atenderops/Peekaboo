@@ -189,6 +189,11 @@ const images = [
     caption: 'Haugesund, Norway',
     subcaption: '',
   },
+  {
+    src: 'https://images-webcams.windy.com/89/1720872089/current/full/1720872089.jpg',
+    caption: 'Bangkok, Thailand',
+    subcaption: '',
+  },
 ];
 
 // Fisher-Yates shuffle
