@@ -4,20 +4,15 @@
 import { useEffect, useRef, useState } from 'react';
 
 const images = [
-  {
-    src: 'https://kamera.atlas.vegvesen.no/api/images/0429004_1',
-    caption: 'Kongsvinger, Norway',
-    subcaption: 'near Finnsrud, Skotterud & Vestmarka',
-  },
-  {
-    src: 'https://www.karlslundsmarina.nu/wp-content/uploads/kamera-syd.jpg',
+    {
+    src: 'http://www.karlslundsmarina.nu/wp-content/uploads/kamera-syd.jpg',
     caption: 'Stockholm, Sweden',
     subcaption: 'near Strängnäs',
   },
   {
-    src: 'https://ctraficomovilidad.malaga.eu/recursos/movilidad/camaras_trafico/TV-07.jpg',
-    caption: 'Malaga, Spain',
-    subcaption: '',
+    src: 'https://kamera.atlas.vegvesen.no/api/images/0429004_1',
+    caption: 'Kongsvinger, Norway',
+    subcaption: 'near Finnsrud, Skotterud & Vestmarka',
   },
   {
     src: 'https://images-webcams.windy.com/49/1689408949/current/full/1689408949.jpg',
@@ -171,8 +166,8 @@ const images = [
   },
   {
     src: 'https://enrk.net/webcam/southeast000M.jpg',
-    caption: 'Mysen, Norway',
-    subcaption: '',
+    caption: 'Rakkestad, Norway',
+    subcaption: 'Near Mysen',
   },
   {
     src: 'https://images-webcams.windy.com/39/1675205239/current/full/1675205239.jpg',
@@ -237,6 +232,12 @@ function getImageSrc(img: { src: string; caption: string }, cacheBust: string) {
   return `${img.src}${img.src.includes('?') ? '&' : '?'}${cacheBust}`;
 }
 
+// Debug flags
+// Set these to true to enable debug features
+const debugAutoAdvance = true; // <--- EDIT THIS LINE
+const debugRandomOrder = true; // <--- EDIT THIS LINE
+const debugArrowNavigation = true; // <--- EDIT THIS LINE
+
 export default function Home() {
   const [order, setOrder] = useState<number[]>(images.map((_, i) => i));
   const [pointer, setPointer] = useState(0);
@@ -250,8 +251,26 @@ export default function Home() {
   // Hydration flag and shuffle after hydration
   useEffect(() => {
     setHasHydrated(true);
-    setOrder(shuffleArray(images.map((_, i) => i))); // shuffle only on client
+    setOrder(
+      debugRandomOrder
+        ? shuffleArray(images.map((_, i) => i))
+        : images.map((_, i) => i)
+    );
   }, []);
+
+  // Arrow key navigation
+  useEffect(() => {
+    if (!debugArrowNavigation) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowRight') {
+        setPointer((prev) => (prev + 1) % images.length);
+      } else if (e.key === 'ArrowLeft') {
+        setPointer((prev) => (prev - 1 + images.length) % images.length);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [debugArrowNavigation, images.length]);
 
   // Generate a new cache bust string for each image change
   useEffect(() => {
@@ -274,14 +293,13 @@ export default function Home() {
 
   // Fade and image switch logic
   useEffect(() => {
-    if (!hasHydrated) return;
+    if (!hasHydrated || !debugAutoAdvance) return;
     const fadeOutTimeout = setTimeout(() => {
       setFade(true);
       setTimeout(() => {
         setPointer((prev) => {
           const next = prev + 1;
           if (next >= images.length) {
-            // Reshuffle for the next round
             setOrder(shuffleArray(images.map((_, i) => i)));
             return 0;
           }
