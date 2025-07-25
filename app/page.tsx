@@ -2,214 +2,23 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import locationsDataRaw from './locations.json'; // adjust path as needed
 
-const images = [
-    {
-    src: 'http://www.karlslundsmarina.nu/wp-content/uploads/kamera-syd.jpg',
-    caption: 'Stockholm, Sweden',
-    subcaption: 'near Strängnäs',
-  },
-  {
-    src: 'https://kamera.atlas.vegvesen.no/api/images/0429004_1',
-    caption: 'Kongsvinger, Norway',
-    subcaption: 'near Finnsrud, Skotterud & Vestmarka',
-  },
-  {
-    src: 'https://images-webcams.windy.com/49/1689408949/current/full/1689408949.jpg',
-    caption: 'Malaga, Spain',
-    subcaption: '',
-  },
-  {
-    src: 'https://images-webcams.windy.com/05/1306625605/current/full/1306625605.jpg',
-    caption: 'Guanajuato, Mexico',
-    subcaption: '',
-  },
-  {
-    src: 'https://images-webcams.windy.com/26/1306621426/current/full/1306621426.jpg',
-    caption: 'Mexico City, Mexico',
-    subcaption: '',
-  },
-  {
-    src: 'https://images-webcams.windy.com/05/1385823105/current/full/1385823105.jpg',
-    caption: 'Calimanesti, Romania',
-    subcaption: 'near Valcea',
-  },
-  {
-    src: 'https://kamera.atlas.vegvesen.no/api/images/3000896_1',
-    caption: 'Festøya, Norway',
-    subcaption: 'near Hundeidvik',
-  },
-  {
-    src: 'https://images-webcams.windy.com/83/1616032183/current/full/1616032183.jpg',
-    caption: 'Glasgow, Scotland',
-    subcaption: '',
-  },
-  {
-    src: 'https://images-webcams.windy.com/99/1585143899/current/full/1585143899.jpg',
-    caption: 'Grimstad, Norway',
-    subcaption: '',
-  },
-  {
-    src: 'https://images-webcams.windy.com/67/1353056967/current/full/1353056967.jpg',
-    caption: 'Larvik, Norway',
-    subcaption: '',
-  },
-  {
-    src: 'https://images-webcams.windy.com/60/1496484660/current/full/1496484660.jpg',
-    caption: 'Belfast, Northern Ireland',
-    subcaption: '',
-  },
-  {
-    src: 'https://images-webcams.windy.com/18/1559677318/current/full/1559677318.jpg',
-    caption: 'Gothenburg, Sweden',
-    subcaption: '',
-  },
-  {
-    src: 'https://images-webcams.windy.com/48/1459599148/current/full/1459599148.jpg',
-    caption: 'Hamburg, Germany',
-    subcaption: '',
-  },
-  {
-    src: 'https://cams.oresundsbron.com/pylonwest',
-    caption: 'Malmö, Sweden',
-    subcaption: 'Oresund Bridge, near Hjärup',
-  },
-  {
-    src: 'https://images-webcams.windy.com/03/1180866703/current/full/1180866703.jpg',
-    caption: 'Cancun, Mexico',
-    subcaption: 'near Merida',
-  },
-  {
-    src: 'https://images-webcams.windy.com/29/1309679629/current/full/1309679629.jpg',
-    caption: 'Mariestad, Sweden',
-    subcaption: '',
-  },
-  {
-    src: 'https://images-webcams.windy.com/85/1491224085/current/full/1491224085.jpg',
-    caption: 'Wexford, Ireland',
-    subcaption: '',
-  },
-  {
-    src: 'https://images-webcams.windy.com/20/1669881620/current/full/1669881620.jpg',
-    caption: 'Stavanger, Norway',
-    subcaption: '',
-  },
-  {
-    src: 'https://images-webcams.windy.com/07/1665692307/current/full/1665692307.jpg',
-    caption: 'Cali, Colombia',
-    subcaption: '',
-  },
-  {
-    src: 'https://annaboda.s3.eu-north-1.amazonaws.com/last_image_3.jpg?1752573529559',
-    caption: 'Karlskoga, Sweden',
-    subcaption: '',
-  },
-  {
-    src: 'https://www.sportboothafen-nordenham.de/module/2004024/parts/webcam.php?type=2',
-    caption: 'Bremerhaven, Germany',
-    subcaption: '',
-  },
-  {
-    src: 'https://images-webcams.windy.com/90/1514893190/current/full/1514893190.jpg',
-    caption: 'Sotra, Norway',
-    subcaption: '',
-  },
-  {
-    src: 'https://images-webcams.windy.com/21/1523939321/current/full/1523939321.jpg',
-    caption: 'Birkerød, Denmark',
-    subcaption: '',
-  },
-  {
-    src: 'https://images-webcams.windy.com/93/1632848893/current/full/1632848893.jpg',
-    caption: 'Frederikssund, Denmark',
-    subcaption: '',
-  },
-  {
-    src: 'https://images-webcams.windy.com/07/1686051607/current/full/1686051607.jpg',
-    caption: 'Herlev, Denmark',
-    subcaption: '',
-  },
-  {
-    src: 'https://www.wdr.de/themen/global/webcams/domcam/domcam_960_live.jpg',
-    caption: 'Köln, Germany',
-    subcaption: '',
-  },
-  {
-    src: 'https://nettkamera.cid.no/asgardHavnVest/max.jpg?0.33787127798949435',
-    caption: 'Åsgårdstrand, Norway',
-    subcaption: '',
-  },
-  {
-    src: 'https://www.ursa.fi/yhd/tampereenursa/ys-images/north-snapshot.jpg',
-    caption: 'Tampere, Finland',
-    subcaption: '',
-  },
-  {
-    src: 'https://ie-cam.net/pic/heritage.jpg',
-    caption: 'Tullamore, Ireland',
-    subcaption: '',
-  },
-  {
-    src: 'https://images-webcams.windy.com/71/1460757071/current/full/1460757071.jpg',
-    caption: 'Bergen, Norway',
-    subcaption: '',
-  },
-  {
-    src: 'https://www.lussevika.com/lussevikawebcam.jpg',
-    caption: 'Mandal, Norway',
-    subcaption: '',
-  },
-  {
-    src: 'https://images-webcams.windy.com/16/1337867816/current/full/1337867816.jpg',
-    caption: 'Oslo, Norway',
-    subcaption: '',
-  },
-  {
-    src: 'https://enrk.net/webcam/southeast000M.jpg',
-    caption: 'Rakkestad, Norway',
-    subcaption: 'Near Mysen',
-  },
-  {
-    src: 'https://images-webcams.windy.com/39/1675205239/current/full/1675205239.jpg',
-    caption: 'Hønefoss, Norway',
-    subcaption: '',
-  },
-  {
-    src: 'https://images-webcams.windy.com/29/1657223329/current/full/1657223329.jpg',
-    caption: 'Helsingborg, Sweden',
-    subcaption: '',
-  },
-  {
-    src: 'https://snapshot.hhcamping.no:5000/snap/0',
-    caption: 'Haugesund, Norway',
-    subcaption: '',
-  },
-  {
-    src: 'https://images-webcams.windy.com/89/1720872089/current/full/1720872089.jpg',
-    caption: 'Bangkok, Thailand',
-    subcaption: '',
-  },
-  {
-    src: 'https://images-webcams.windy.com/44/1632771444/current/full/1632771444.jpg',
-    caption: 'Goiânia, Brazil',
-    subcaption: '',
-  },
-  {
-    src: 'https://images-webcams.windy.com/43/1593548443/current/full/1593548443.jpg',
-    caption: 'Söderköping, Sweden',
-    subcaption: '',
-  },
-  {
-    src: 'https://images-webcams.windy.com/76/1351356776/current/full/1351356776.jpg',
-    caption: 'Seville, Spain',
-    subcaption: '',
-  },
-  {
-    src: 'https://images-webcams.windy.com/85/1666687085/current/full/1666687085.jpg',
-    caption: 'Tyler, TX, USA',
-    subcaption: '',
-  },
-];
+// Pick one random image per location for a rotation
+function pickRandomImages(locationsObj: Record<string, Array<{ src: string; subcaption?: string }>>) {
+  const arr: Array<{ src: string; caption: string; subcaption?: string }> = [];
+  for (const location in locationsObj) {
+    const imagesArr = locationsObj[location];
+    const randomIdx = Math.floor(Math.random() * imagesArr.length);
+    const imgObj = imagesArr[randomIdx];
+    arr.push({
+      src: imgObj.src,
+      caption: location,
+      subcaption: imgObj.subcaption ?? '',
+    });
+  }
+  return arr;
+}
 
 // Fisher-Yates shuffle
 function shuffleArray<T>(array: T[]): T[] {
@@ -222,7 +31,6 @@ function shuffleArray<T>(array: T[]): T[] {
 }
 
 function getImageSrc(img: { src: string; caption: string }, cacheBust: string) {
-  // Skip cache-busting for servers that don't support it
   if (
     img.src.includes('ctraficomovilidad.malaga.eu') ||
     img.src.includes('lh3.googleusercontent.com')
@@ -232,14 +40,11 @@ function getImageSrc(img: { src: string; caption: string }, cacheBust: string) {
   return `${img.src}${img.src.includes('?') ? '&' : '?'}${cacheBust}`;
 }
 
-// Debug flags
-// Set these to true to enable debug features
-const debugAutoAdvance = true; // <--- EDIT THIS LINE
-const debugRandomOrder = true; // <--- EDIT THIS LINE
-const debugArrowNavigation = true; // <--- EDIT THIS LINE
-
 export default function Home() {
-  const [order, setOrder] = useState<number[]>(images.map((_, i) => i));
+  // Images for the current rotation
+  const [rotationImages, setRotationImages] = useState<Array<{ src: string; caption: string; subcaption?: string }>>([]);
+  // Shuffle order for the current rotation
+  const [order, setOrder] = useState<number[]>([]);
   const [pointer, setPointer] = useState(0);
   const [fade, setFade] = useState(false);
   const [hasHydrated, setHasHydrated] = useState(false);
@@ -251,26 +56,28 @@ export default function Home() {
   // Hydration flag and shuffle after hydration
   useEffect(() => {
     setHasHydrated(true);
-    setOrder(
-      debugRandomOrder
-        ? shuffleArray(images.map((_, i) => i))
-        : images.map((_, i) => i)
-    );
+    // Only pick random images and shuffle order after hydration (client-side)
+    const imgs = pickRandomImages(locationsDataRaw);
+    setRotationImages(imgs);
+    setOrder(shuffleArray(imgs.map((_, i) => i)));
   }, []);
+
+  // Enable arrow key navigation for debugging
+  const debugArrowNavigation = true; // Set to true to enable arrow navigation
 
   // Arrow key navigation
   useEffect(() => {
     if (!debugArrowNavigation) return;
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'ArrowRight') {
-        setPointer((prev) => (prev + 1) % images.length);
+        setPointer((prev) => (prev + 1) % rotationImages.length);
       } else if (e.key === 'ArrowLeft') {
-        setPointer((prev) => (prev - 1 + images.length) % images.length);
+        setPointer((prev) => (prev - 1 + rotationImages.length) % rotationImages.length);
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [debugArrowNavigation, images.length]);
+  }, [debugArrowNavigation, rotationImages.length]);
 
   // Generate a new cache bust string for each image change
   useEffect(() => {
@@ -282,25 +89,28 @@ export default function Home() {
   // Preload the next image with the same cache bust string
   useEffect(() => {
     if (!hasHydrated) return;
-    const nextPointer = (pointer + 1) % images.length;
+    const nextPointer = (pointer + 1) % rotationImages.length;
     const nextIndex = order[nextPointer];
-    const nextSrc = getImageSrc(images[nextIndex], `cb=${Date.now()}`);
+    const nextSrc = getImageSrc(rotationImages[nextIndex], `cb=${Date.now()}`);
     if (!preloadImg.current) {
       preloadImg.current = new window.Image();
     }
     preloadImg.current.src = nextSrc;
-  }, [pointer, order, hasHydrated]);
+  }, [pointer, order, hasHydrated, rotationImages]);
 
   // Fade and image switch logic
   useEffect(() => {
-    if (!hasHydrated || !debugAutoAdvance) return;
+    if (!hasHydrated) return;
     const fadeOutTimeout = setTimeout(() => {
       setFade(true);
       setTimeout(() => {
         setPointer((prev) => {
           const next = prev + 1;
-          if (next >= images.length) {
-            setOrder(shuffleArray(images.map((_, i) => i)));
+          if (next >= rotationImages.length) {
+            // New rotation: pick new random images and shuffle order
+            const imgs = pickRandomImages(locationsDataRaw);
+            setRotationImages(imgs);
+            setOrder(shuffleArray(imgs.map((_, i) => i)));
             return 0;
           }
           return next;
@@ -310,7 +120,7 @@ export default function Home() {
     }, 15000);
 
     return () => clearTimeout(fadeOutTimeout);
-  }, [pointer, hasHydrated, order]);
+  }, [pointer, hasHydrated, order, rotationImages]);
 
   // Infobox random timing logic with fade
   useEffect(() => {
@@ -346,23 +156,35 @@ export default function Home() {
   }, [hasHydrated]);
 
   const currentIndex = order[pointer];
+
+  // Move this guard clause ABOVE any usage of rotationImages[currentIndex]
+  if (
+    !hasHydrated ||
+    rotationImages.length === 0 ||
+    order.length === 0 ||
+    currentIndex === undefined ||
+    rotationImages[currentIndex] === undefined
+  ) {
+    return null; // or a loading spinner
+  }
+
   const src = hasHydrated
-    ? getImageSrc(images[currentIndex], cacheBust)
-    : images[currentIndex].src;
+    ? getImageSrc(rotationImages[currentIndex], cacheBust)
+    : rotationImages[currentIndex].src;
 
   return (
     <div className="w-screen h-screen flex flex-col items-center justify-center bg-[#222] overflow-hidden relative">
       <img
         src={src}
-        alt={images[currentIndex].caption}
+        alt={rotationImages[currentIndex].caption}
         className={`w-screen h-screen object-contain bg-[#222] rounded-none shadow-none block transition-opacity duration-1000 ${fade ? 'opacity-0' : 'opacity-100'}`}
         style={{ transitionProperty: 'opacity' }}
       />
       <div className="absolute top-[150px] right-0 w-[30vw] text-white text-2xl text-center bg-black/40 py-4 m-0">
-        {images[currentIndex].caption}
-        {images[currentIndex].subcaption && (
-          <div className="text-base text-gray-200 mt-2">
-            {images[currentIndex].subcaption}
+        {rotationImages[currentIndex].caption}
+        {rotationImages[currentIndex].subcaption && (
+          <div className="text-sm text-gray-200 mt-2">
+            {rotationImages[currentIndex].subcaption}
           </div>
         )}
       </div>
@@ -390,7 +212,7 @@ export default function Home() {
             display: showInfoBox ? 'block' : 'block', // always reserve space
           }}
         >
-          Atender Peekaboo is a webcam carousel that showcases the hometown or area where each employee in the company comes from around the world. <br></br>
+          Atender Peekaboo is a webcam carousel that showcases the hometown or area where each employee in the company comes from around the world. <br />
           If your area is missing, reach out to the Tech team.
         </div>
       </div>

@@ -1,0 +1,268 @@
+{
+    "Stockholm, Sweden": [
+        {
+            "src": "http://www.karlslundsmarina.nu/wp-content/uploads/kamera-syd.jpg",
+            "subcaption": "near Strängnäs"
+        }
+    ],
+    "Kongsvinger, Norway": [
+        {
+            "src": "https://kamera.atlas.vegvesen.no/api/images/0429004_1",
+            "subcaption": "near Finnsrud, Skotterud & Vestmarka"
+        }
+    ],
+    "Malaga, Spain": [
+        {
+            "src": "https://images-webcams.windy.com/49/1689408949/current/full/1689408949.jpg",
+            "subcaption": ""
+        }
+    ],
+    "Guanajuato, Mexico": [
+        {
+            "src": "https://images-webcams.windy.com/05/1306625605/current/full/1306625605.jpg",
+            "subcaption": ""
+        }
+    ],
+    "Mexico City, Mexico": [
+        {
+            "src": "https://images-webcams.windy.com/26/1306621426/current/full/1306621426.jpg",
+            "subcaption": ""
+        }
+    ],
+    "Calimanesti, Romania": [
+        {
+            "src": "https://images-webcams.windy.com/05/1385823105/current/full/1385823105.jpg",
+            "subcaption": "near Valcea"
+        }
+    ],
+    "Festøya, Norway": [
+        {
+            "src": "https://kamera.atlas.vegvesen.no/api/images/3000896_1",
+            "subcaption": "near Hundeidvik"
+        }
+    ],
+    "Glasgow, Scotland": [
+        {
+            "src": "https://images-webcams.windy.com/83/1616032183/current/full/1616032183.jpg",
+            "subcaption": ""
+        },
+        {
+            "src": "images/Glasgow 1.jpg",
+            "subcaption": ""
+        },
+        {
+            "src": "images/Glasgow 2.jpg",
+            "subcaption": ""
+        },
+        {
+            "src": "images/Glasgow 3.jpg",
+            "subcaption": ""
+        },
+        {
+            "src": "images/Glasgow 4.jpg",
+            "subcaption": ""
+        },
+        {
+            "src": "images/Glasgow 5.jpg",
+            "subcaption": ""
+        }
+    ],
+    "Grimstad, Norway": [
+        {
+            "src": "https://images-webcams.windy.com/99/1585143899/current/full/1585143899.jpg",
+            "subcaption": ""
+        }
+    ],
+    "Larvik, Norway": [
+        {
+            "src": "https://images-webcams.windy.com/67/1353056967/current/full/1353056967.jpg",
+            "subcaption": ""
+        }
+    ],
+    "Belfast, Northern Ireland": [
+        {
+            "src": "https://images-webcams.windy.com/60/1496484660/current/full/1496484660.jpg",
+            "subcaption": ""
+        }
+    ],
+    "Gothenburg, Sweden": [
+        {
+            "src": "https://images-webcams.windy.com/18/1559677318/current/full/1559677318.jpg",
+            "subcaption": ""
+        }
+    ],
+    "Hamburg, Germany": [
+        {
+            "src": "https://images-webcams.windy.com/48/1459599148/current/full/1459599148.jpg",
+            "subcaption": ""
+        }
+    ],
+    "Malmö, Sweden": [
+        {
+            "src": "https://cams.oresundsbron.com/pylonwest",
+            "subcaption": "Oresund Bridge, near Hjärup"
+        }
+    ],
+    "Cancun, Mexico": [
+        {
+            "src": "https://images-webcams.windy.com/03/1180866703/current/full/1180866703.jpg",
+            "subcaption": "near Merida"
+        }
+    ],
+    "Mariestad, Sweden": [
+        {
+            "src": "https://images-webcams.windy.com/29/1309679629/current/full/1309679629.jpg",
+            "subcaption": ""
+        }
+    ],
+    "Wexford, Ireland": [
+        {
+            "src": "https://images-webcams.windy.com/85/1491224085/current/full/1491224085.jpg",
+            "subcaption": ""
+        }
+    ],
+    "Stavanger, Norway": [
+        {
+            "src": "https://images-webcams.windy.com/20/1669881620/current/full/1669881620.jpg",
+            "subcaption": ""
+        }
+    ],
+    "Cali, Colombia": [
+        {
+            "src": "https://images-webcams.windy.com/07/1665692307/current/full/1665692307.jpg",
+            "subcaption": ""
+        }
+    ],
+    "Karlskoga, Sweden": [
+        {
+            "src": "https://annaboda.s3.eu-north-1.amazonaws.com/last_image_3.jpg?1752573529559",
+            "subcaption": ""
+        }
+    ],
+    "Bremerhaven, Germany": [
+        {
+            "src": "https://www.sportboothafen-nordenham.de/module/2004024/parts/webcam.php?type=2",
+            "subcaption": ""
+        }
+    ],
+    "Sotra, Norway": [
+        {
+            "src": "https://images-webcams.windy.com/90/1514893190/current/full/1514893190.jpg",
+            "subcaption": ""
+        }
+    ],
+    "Birkerød, Denmark": [
+        {
+            "src": "https://images-webcams.windy.com/21/1523939321/current/full/1523939321.jpg",
+            "subcaption": ""
+        }
+    ],
+    "Frederikssund, Denmark": [
+        {
+            "src": "https://images-webcams.windy.com/93/1632848893/current/full/1632848893.jpg",
+            "subcaption": ""
+        }
+    ],
+    "Herlev, Denmark": [
+        {
+            "src": "https://images-webcams.windy.com/07/1686051607/current/full/1686051607.jpg",
+            "subcaption": ""
+        }
+    ],
+    "Köln, Germany": [
+        {
+            "src": "https://www.wdr.de/themen/global/webcams/domcam/domcam_960_live.jpg",
+            "subcaption": ""
+        }
+    ],
+    "Åsgårdstrand, Norway": [
+        {
+            "src": "https://nettkamera.cid.no/asgardHavnVest/max.jpg?0.33787127798949435",
+            "subcaption": ""
+        }
+    ],
+    "Tampere, Finland": [
+        {
+            "src": "https://www.ursa.fi/yhd/tampereenursa/ys-images/north-snapshot.jpg",
+            "subcaption": ""
+        }
+    ],
+    "Tullamore, Ireland": [
+        {
+            "src": "https://ie-cam.net/pic/heritage.jpg",
+            "subcaption": ""
+        }
+    ],
+    "Bergen, Norway": [
+        {
+            "src": "https://images-webcams.windy.com/71/1460757071/current/full/1460757071.jpg",
+            "subcaption": ""
+        }
+    ],
+    "Mandal, Norway": [
+        {
+            "src": "https://www.lussevika.com/lussevikawebcam.jpg",
+            "subcaption": ""
+        }
+    ],
+    "Oslo, Norway": [
+        {
+            "src": "https://images-webcams.windy.com/16/1337867816/current/full/1337867816.jpg",
+            "subcaption": ""
+        }
+    ],
+    "Rakkestad, Norway": [
+        {
+            "src": "https://enrk.net/webcam/southeast000M.jpg",
+            "subcaption": "Near Mysen"
+        }
+    ],
+    "Hønefoss, Norway": [
+        {
+            "src": "https://images-webcams.windy.com/39/1675205239/current/full/1675205239.jpg",
+            "subcaption": ""
+        }
+    ],
+    "Helsingborg, Sweden": [
+        {
+            "src": "https://images-webcams.windy.com/29/1657223329/current/full/1657223329.jpg",
+            "subcaption": ""
+        }
+    ],
+    "Haugesund, Norway": [
+        {
+            "src": "https://snapshot.hhcamping.no:5000/snap/0",
+            "subcaption": ""
+        }
+    ],
+    "Bangkok, Thailand": [
+        {
+            "src": "https://images-webcams.windy.com/89/1720872089/current/full/1720872089.jpg",
+            "subcaption": ""
+        }
+    ],
+    "Goiânia, Brazil": [
+        {
+            "src": "https://images-webcams.windy.com/44/1632771444/current/full/1632771444.jpg",
+            "subcaption": ""
+        }
+    ],
+    "Söderköping, Sweden": [
+        {
+            "src": "https://images-webcams.windy.com/43/1593548443/current/full/1593548443.jpg",
+            "subcaption": ""
+        }
+    ],
+    "Seville, Spain": [
+        {
+            "src": "https://images-webcams.windy.com/76/1351356776/current/full/1351356776.jpg",
+            "subcaption": ""
+        }
+    ],
+    "Tyler, TX, USA": [
+        {
+            "src": "https://images-webcams.windy.com/85/1666687085/current/full/1666687085.jpg",
+            "subcaption": ""
+        }
+    ]
+}
