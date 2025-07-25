@@ -41,6 +41,66 @@
             "subcaption": "near Hundeidvik"
         }
     ],
+    "Mysen, Norway": [
+        {
+            "src": "/images/Mysen 1.jpg",
+            "subcaption": ""
+        },
+        {
+            "src": "/images/Mysen 2.jpg",
+            "subcaption": ""
+        },
+        {
+            "src": "/images/Mysen 3.jpg",
+            "subcaption": ""
+        },
+        {
+            "src": "/images/Mysen 4.jpg",
+            "subcaption": ""
+        }
+    ],
+    
+    "Jæren, Norway": [
+        {
+            "src": "/images/Jæren 1.jpg",
+            "subcaption": ""
+        },
+        {
+            "src": "/images/Jæren 2.jpg",
+            "subcaption": ""
+        },
+        {
+            "src": "/images/Jæren 3.jpg",
+            "subcaption": ""
+        },
+        {
+            "src": "/images/Jæren 4.jpg",
+            "subcaption": ""
+        },
+        {
+            "src": "/images/Jæren 5.jpg",
+            "subcaption": ""
+        },
+        {
+            "src": "/images/Jæren 6.jpg",
+            "subcaption": ""
+        },
+        {
+            "src": "/images/Jæren 7.jpg",
+            "subcaption": ""
+        },
+        {
+            "src": "/images/Jæren 8.jpg",
+            "subcaption": ""
+        },
+        {
+            "src": "/images/Jæren 9.jpg",
+            "subcaption": ""
+        },
+        {
+            "src": "/images/Jæren 10.jpg",
+            "subcaption": ""
+        }],
     "Glasgow, Scotland": [
         {
             "src": "https://images-webcams.windy.com/83/1616032183/current/full/1616032183.jpg",
@@ -166,6 +226,10 @@
     "Herlev, Denmark": [
         {
             "src": "https://images-webcams.windy.com/07/1686051607/current/full/1686051607.jpg",
+            "subcaption": ""
+        },
+        {
+            "src": "/images/Herlev 1.jpg",
             "subcaption": ""
         }
     ],
