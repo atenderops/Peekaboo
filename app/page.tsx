@@ -212,8 +212,7 @@ export default function Home() {
             display: showInfoBox ? 'block' : 'block', // always reserve space
           }}
         >
-          Atender Peekaboo is a webcam carousel that showcases the hometown or area where each employee in the company comes from around the world. <br />
-          If your area is missing, reach out to the Tech team.
+          Atender Peekaboo is a webcam carousel that showcases the hometown or area where each employee in the company comes from around the world.
         </div>
       </div>
     </div>
